@@ -17,10 +17,6 @@ graph = {
 }
 
 # BFS (Breadth First Search)
-# 1. Start from the given node and mark it visited
-# 2. Add it to the queue
-# 3. While queue is not empty, take the front node
-# 4. Visit all unvisited neighbours of that node
 def bfs(graph, start):
     visited = set()          # keeps track of visited nodes
     queue = deque()          # queue for BFS
@@ -39,10 +35,6 @@ def bfs(graph, start):
 print("BFS Traversal:", bfs(graph, 'A'))
 
 # DFS (Depth First Search)
-# 1. Start from the given node and mark it visited
-# 2. Add it to the stack
-# 3. While stack is not empty, take the top node
-# 4. Visit all unvisited neighbours of that node
 def dfs(graph, start):
     visited = set()          # keeps track of visited nodes
     stack = [start]          # stack for DFS
