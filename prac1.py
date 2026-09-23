@@ -1,14 +1,16 @@
-# def tower_of_hanoi(n,source,auxillary,target):
-#     if n==1:
-#         print(f"Move disk 1 from {source} to {target}")
-#         return
+#prac 1 question 1 
 
-#     tower_of_hanoi(n-1,source,target,auxillary)
-#     print(f"Move disk {n} from {source} to {target}")
-#     tower_of_hanoi(n-1,auxillary,source,target)
+def tower_of_hanoi(n,source,auxillary,target):
+    if n==1:
+        print(f"Move disk 1 from {source} to {target}")
+        return
 
-# num_discs=3
-# tower_of_hanoi(num_discs, 'A','B','C')
+    tower_of_hanoi(n-1,source,target,auxillary)
+    print(f"Move disk {n} from {source} to {target}")
+    tower_of_hanoi(n-1,auxillary,source,target)
+
+num_discs=3
+tower_of_hanoi(num_discs, 'A','B','C')
 
 
 # write python code to solve n queens problem
