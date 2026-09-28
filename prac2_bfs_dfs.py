@@ -1,5 +1,5 @@
 from collections import deque
-
+#bfs
 graph = {
     'A': ['B'],
     'B': ['A', 'C', 'H'],
@@ -16,40 +16,70 @@ graph = {
     'M': ['H']
 }
 
-# BFS (Breadth First Search)
 def bfs(graph, start):
-    visited = set()          # keeps track of visited nodes
-    queue = deque()          # queue for BFS
-    visited.add(start)       # mark start as visited
-    queue.append(start)      # push start into queue
-    result = []              # stores traversal order
+    visited = set([start])
+    queue = deque([start])
+    result = []
 
     while queue:
-        node = queue.popleft()      # remove front node
-        result.append(node)         # add it to result
-        for neighbour in graph[node]:       # check all neighbours
-            if neighbour not in visited:    # if not visited
-                visited.add(neighbour)      # mark visited
-                queue.append(neighbour)     # add to queue
+        node = queue.popleft()
+        result.append(node)
+
+        for neighbour in graph[node]:
+            if neighbour not in visited:
+                visited.add(neighbour)
+                queue.append(neighbour)
+
     return result
+
 print("BFS Traversal:", bfs(graph, 'A'))
 
-# DFS (Depth First Search)
+# dfs 
+graph = {
+    'A': ['B'],
+    'B': ['A', 'C', 'H'],
+    'C': ['B', 'D'],
+    'D': ['C', 'E', 'G'],
+    'E': ['D', 'F'],
+    'F': ['E'],
+    'G': ['D'],
+    'H': ['B', 'I', 'J', 'M'],
+    'I': ['H'],
+    'J': ['H', 'K'],
+    'K': ['J', 'L'],
+    'L': ['K'],
+    'M': ['H']
+}
+
 def dfs(graph, start):
-    visited = set()          # keeps track of visited nodes
-    stack = [start]          # stack for DFS
-    visited.add(start)       # mark start as visited
-    result = []              # stores traversal order
+    visited = set([start])
+    stack = [start]
+    result = []
 
     while stack:
-        node = stack.pop()              # remove top node
-        result.append(node)             # add it to result
-        for neighbour in graph[node]:   # check all neighbours
-            if neighbour not in visited:    # if not visited
-                visited.add(neighbour)      # mark visited
-                stack.append(neighbour)     # add to stack
+        node = stack.pop()
+        result.append(node)
+
+        for neighbour in reversed(graph[node]):
+            if neighbour not in visited:
+                visited.add(neighbour)
+                stack.append(neighbour)
+
     return result
 
 print("DFS Traversal:", dfs(graph, 'A'))
 
 
+
+
+# Algorithm:
+# BFS Algorithm:
+# 1. Mark the starting node as visited and insert it into a queue.
+# 2. While the queue is not empty, remove the front node and add it to the traversal result.
+# 3. For each unvisited neighbour of that node, mark it visited and push it into the queue.
+# DFS Algorithm:
+# 1. Mark the starting node as visited and push it onto a stack.
+# 2. While the stack is not empty, pop the top node and add it to the traversal result.
+# 3. For each unvisited neighbour of that node, mark it visited and push it onto the stack.
+# Explanation:
+# BFS (Breadth-First Search) explores a graph level by level using a queue, visiting all neighbours of a node before moving deeper. DFS (Depth-First Search) explores as far as possible along each branch using a stack, then backtracks.

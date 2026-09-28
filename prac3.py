@@ -54,3 +54,13 @@ path, cost = a_star('A', 'J')
 print("A* Path:", path)
 print("Total Cost:", cost)
 
+
+
+#Algorithm:
+# 1. Initialise the open list (priority queue) with the start node, sorted by f = g + h.
+# 2. Pop the node with the smallest f value from the open list.
+# 3. If it is the goal node, reconstruct the path using the parent pointers and return it.
+# 4. For each neighbour, compute new_g = current g + edge cost.
+# 5. If new_g is better than the recorded g_score, update g_score, set the parent, compute f = new_g + heuristic, and push it into the open list.
+# Explanation:
+# A* is a best-first search that finds the shortest path by expanding the node with the smallest f = g + h, where g is the actual cost from the start and h is an estimated (heuristic) cost to the goal.

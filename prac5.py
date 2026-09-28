@@ -1,15 +1,3 @@
-# implement alpha beta pruning
-
-# Alpha-Beta Pruning (Min-Max)
-# 1. Traverse the game tree depth-first (Minimax)
-# 2. Maintain two values:
-#    - alpha  = best value found so far for MAX player (initially -infinity)
-#    - beta   = best value found so far for MIN player (initially +infinity)
-# 3. MAX node: pick the maximum of child values and update alpha
-# 4. MIN node: pick the minimum of child values and update beta
-# 5. Prune: if beta <= alpha at a node, stop exploring its remaining children
-# 6. Return the best value evaluated from the root
-
 def alpha_beta_pruning(node, depth, alpha, beta, maximizing_player, path):
     if isinstance(node, int):  # leaf node -> utility value
         return node, path
@@ -75,3 +63,15 @@ print("2) MIN values of each branch:", [int(minimax_value(c, False)) for c in tr
 branch_values = [minimax_value(c, False) for c in tree]
 best_child_index = max(range(len(tree)), key=lambda i: branch_values[i])
 print("3) Optimal move: choose branch", best_child_index, "-> MIN value", int(branch_values[best_child_index]))
+
+
+
+# Algorithm:
+# 1. Traverse the game tree in a depth-first manner (Minimax).
+# 2. Maintain alpha (best value for MAX, initially -infinity) and beta (best value for MIN, initially +infinity).
+# 3. At a MAX node, pick the maximum of the child values and update alpha.
+# 4. At a MIN node, pick the minimum of the child values and update beta.
+# 5. Prune: whenever beta <= alpha, stop exploring the remaining children of that node.
+# 6. Return the best value obtained from the root.
+# Explanation:
+# Alpha-beta pruning optimises the Minimax algorithm by cutting off branches that cannot influence the final decision. It keeps alpha and beta bounds and gives the same result while evaluating fewer nodes.
